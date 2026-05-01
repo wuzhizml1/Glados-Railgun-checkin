@@ -3,12 +3,12 @@ name: auto check
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]  # 【修改点1】这里原来是 main，改成了 master
     paths-ignore:
       - 'README.md'
       - 'imgs/'
   schedule:
-    - cron: '0 4,10 * * *'
+    - cron: '23 4,10 * * *' # 【修改点2】这里原来是 0，改成了 23，避开整点拥堵
   watch:
     types: started
 
@@ -47,7 +47,7 @@ jobs:
 
     - name: keep alive
       uses: liskin/gh-workflow-keepalive@v1 # using the workflow with default settings
-      
+       
     - name: delete workflow runs
       uses: Mattraks/delete-workflow-runs@v2
       with:
@@ -56,4 +56,3 @@ jobs:
         retain_days: 7
         keep_minimum_runs: 7
         delete_run_by_conclusion_pattern: success
- 
