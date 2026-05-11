@@ -8,7 +8,7 @@ on:
       - 'README.md'
       - 'imgs/'
   schedule:
-    - cron: '23 4,10 * * *' # 【修改点2】这里原来是 0，改成了 23，避开整点拥堵
+    - cron: '17 2,5,8,11,14,17,20,23 * * *'
   watch:
     types: started
 
